@@ -65,7 +65,7 @@ export default function RootLayout({
         <div className="min-h-screen">
           <Header />
           {/* Main content area with left margin for sidebar on desktop */}
-          <main className="lg:ml-[560px] lg:py-24 py-20 px-6 lg:px-24">
+          <main className="lg:ml-[560px] lg:py-24 pt-32 pb-20 px-6 lg:px-24">
             {children}
           </main>
           <Footer />

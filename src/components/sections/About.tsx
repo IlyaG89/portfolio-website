@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
  */
 export default function About() {
     return (
-        <section id="about" className="mb-24 scroll-mt-16">
+        <section id="about" className="mb-24 scroll-mt-24 lg:scroll-mt-16">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -232,6 +233,22 @@ export default function Header() {
             {/* Desktop Sidebar */}
             <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-[560px] flex-col justify-between p-24">
                 <div>
+                    {/* Profile Photo */}
+                    <div className="mb-10">
+                        <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+                            <div className="absolute inset-0" style={{ transform: 'translateX(-10%)' }}>
+                                <Image
+                                    src="/profile.jpg"
+                                    alt="Ilya Goykhfis"
+                                    fill
+                                    className="object-cover scale-150"
+                                    style={{ objectPosition: 'center 30%' }}
+                                    priority
+                                />
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Name */}
                     <Link href="/" className="block mb-4">
                         <h1 className="text-5xl font-bold text-foreground mb-3">
@@ -309,11 +326,28 @@ export default function Header() {
 
             {/* Mobile Header */}
             <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-                <div className="px-6 py-4">
-                    <Link href="/" className="block">
+                <div className="px-6 py-4 flex items-center justify-between gap-4">
+                    {/* Name and Title */}
+                    <Link href="/" className="block flex-1">
                         <h1 className="text-2xl font-bold text-foreground">Ilya Goykhfis</h1>
                         <p className="text-sm text-muted-foreground">Senior Full Stack Developer</p>
                     </Link>
+
+                    {/* Profile Photo - Mobile */}
+                    <div className="flex-shrink-0">
+                        <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-accent/30 shadow-lg">
+                            <div className="absolute inset-0" style={{ transform: 'translateX(-10%)' }}>
+                                <Image
+                                    src="/profile.jpg"
+                                    alt="Ilya Goykhfis"
+                                    fill
+                                    className="object-cover scale-150"
+                                    style={{ objectPosition: 'center 30%' }}
+                                    priority
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </header>
 
