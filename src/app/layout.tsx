@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Ilya Goykhfis" }],
   creator: "Ilya Goykhfis",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
