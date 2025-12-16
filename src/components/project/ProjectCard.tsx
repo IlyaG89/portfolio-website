@@ -47,7 +47,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                             {project.tech_stack.slice(0, 6).map((tech) => (
                                 <span
                                     key={tech}
-                                    className="text-xs text-accent font-medium"
+                                    className="px-3 py-1 text-xs font-medium text-accent bg-accent/10 rounded-full"
                                 >
                                     {tech}
                                 </span>

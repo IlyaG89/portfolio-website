@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MouseSpotlight from "@/components/effects/MouseSpotlight";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
+        <MouseSpotlight />
         <div className="min-h-screen">
           <Header />
           {/* Main content area with left margin for sidebar on desktop */}
