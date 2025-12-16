@@ -1,177 +1,237 @@
 # Portfolio Website
 
-A professional personal portfolio website built with Next.js, TypeScript, Tailwind CSS, and Supabase.
+A modern, responsive portfolio website built with Next.js, TypeScript, and Supabase. Inspired by Brittany Chiang's design philosophy with a focus on clean aesthetics and smooth user experience.
 
-## Features
+![Portfolio Preview](https://img.shields.io/badge/Next.js-15.1-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38bdf8?style=flat-square&logo=tailwind-css)
 
-- 🎨 Clean, minimal design inspired by Brittany Chiang and Sindre Sorhus
-- 🌙 Dark mode support
-- 📱 Fully responsive
-- ⚡ Built with Next.js 14 App Router for optimal performance
-- 🎭 Smooth animations with Framer Motion
-- 🗄️ Dynamic content management with Supabase
-- 🔍 SEO optimized with comprehensive metadata
-- ♿ Accessibility best practices
+## ✨ Features
 
-## Tech Stack
+- **🎨 Modern Design**: Clean, minimalist interface with smooth animations
+- **📱 Fully Responsive**: Optimized for desktop, tablet, and mobile devices
+- **🔄 Dynamic Content**: Experience and projects loaded from Supabase
+- **🧭 Smart Navigation**: Scroll-based URL hash updates with smooth section transitions
+- **⚡ Performance**: Built with Next.js 15 for optimal speed and SEO
+- **🎯 Accessibility**: Semantic HTML and ARIA labels throughout
+- **📧 Contact Integration**: Multiple contact methods (Email, Phone, WhatsApp, Telegram, LinkedIn, GitHub, Instagram)
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
-- **Database**: Supabase (PostgreSQL)
+## 🚀 Tech Stack
+
+### Frontend
+- **Framework**: Next.js 15.1 (App Router)
+- **Language**: TypeScript 5.7
+- **Styling**: Tailwind CSS 4.0
 - **Animations**: Framer Motion
-- **Deployment**: Vercel
+- **Icons**: Custom SVG icons
 
-## Getting Started
+### Backend
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth (ready for future features)
+- **Real-time**: Supabase Realtime subscriptions
 
-### Prerequisites
+### Development
+- **Package Manager**: npm
+- **Linting**: ESLint
+- **Code Quality**: TypeScript strict mode
 
-- Node.js 18+ installed
-- A Supabase account and project
-- npm or yarn package manager
+## 📦 Installation
 
-### Installation
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/IlyaG89/portfolio-website.git
+   cd portfolio-website
+   ```
 
-1. **Clone the repository** (or you're already in it)
-
-2. **Install dependencies**:
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Set up Supabase**:
-   - Create a new project at [supabase.com](https://supabase.com)
-   - Go to Project Settings > API
-   - Copy your project URL and anon key
+3. **Set up environment variables**
+   
+   Create a `.env.local` file in the root directory:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
 
-4. **Configure environment variables**:
-   - Open `.env.local` in the root directory
-   - Replace the placeholder values:
-     ```
-     NEXT_PUBLIC_SUPABASE_URL=your_actual_supabase_url
-     NEXT_PUBLIC_SUPABASE_ANON_KEY=your_actual_supabase_anon_key
-     ```
+4. **Set up Supabase**
+   
+   Run the SQL schema in your Supabase project:
+   ```bash
+   # The schema is in supabase-schema.sql
+   ```
 
-5. **Set up the database**:
-   - Go to your Supabase project dashboard
-   - Navigate to SQL Editor
-   - Copy the contents of `supabase-schema.sql`
-   - Paste and run it in the SQL Editor
-   - This will create all tables and insert sample data
-
-6. **Run the development server**:
+5. **Run the development server**
    ```bash
    npm run dev
    ```
 
-7. **Open your browser**:
-   - Navigate to [http://localhost:3000](http://localhost:3000)
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Project Structure
+## 🗄️ Database Schema
+
+The project uses two main tables:
+
+### `experience`
+- `id`: UUID (Primary Key)
+- `company`: Text
+- `company_url`: Text (nullable)
+- `role`: Text
+- `start_date`: Date
+- `end_date`: Date (nullable)
+- `highlights`: Text Array
+- `display_order`: Integer
+- `created_at`: Timestamp
+
+### `projects`
+- `id`: UUID (Primary Key)
+- `title`: Text
+- `description`: Text
+- `long_description`: Text (nullable)
+- `image_url`: Text (nullable)
+- `demo_url`: Text (nullable)
+- `github_url`: Text (nullable)
+- `tech_stack`: Text Array
+- `featured`: Boolean
+- `display_order`: Integer
+- `created_at`: Timestamp
+
+## 🎯 Key Features Explained
+
+### Scroll-Based Navigation
+The site features intelligent scroll tracking that:
+- Updates the URL hash as you scroll through sections
+- Highlights the active section in the navigation
+- Handles async content loading with MutationObserver
+- Preserves scroll position on page refresh
+
+### Responsive Design
+- **Desktop**: Fixed sidebar with navigation and contact links
+- **Mobile/Tablet**: Top header with bottom navigation bar
+- **Footer**: Contact information visible on mobile devices
+
+### Dynamic Content
+All experience and project data is fetched from Supabase, making it easy to update your portfolio without code changes.
+
+## 📁 Project Structure
 
 ```
 portfolio-website/
 ├── src/
-│   ├── app/                    # Next.js App Router pages
-│   │   ├── layout.tsx          # Root layout with metadata
-│   │   ├── page.tsx            # Home page
-│   │   └── projects/[slug]/    # Dynamic project pages
+│   ├── app/                    # Next.js app router
+│   │   ├── layout.tsx         # Root layout
+│   │   ├── page.tsx           # Home page
+│   │   └── globals.css        # Global styles
 │   ├── components/
-│   │   ├── layout/             # Header, Footer, Section
-│   │   ├── sections/           # Hero, About, Experience, etc.
-│   │   ├── project/            # Project-related components
-│   │   └── ui/                 # Reusable UI components
-│   ├── lib/
-│   │   ├── supabase/           # Supabase client and types
-│   │   └── utils.ts            # Utility functions
-│   └── styles/
-│       └── globals.css         # Global styles
+│   │   ├── layout/            # Layout components
+│   │   │   ├── Header.tsx     # Navigation & sidebar
+│   │   │   └── Footer.tsx     # Mobile footer
+│   │   ├── sections/          # Page sections
+│   │   │   ├── About.tsx
+│   │   │   ├── Experience.tsx
+│   │   │   └── Projects.tsx
+│   │   ├── project/           # Project components
+│   │   └── ui/                # Reusable UI components
+│   └── lib/
+│       ├── supabase/          # Supabase client & types
+│       └── utils.ts           # Utility functions
 ├── public/                     # Static assets
-├── supabase-schema.sql         # Database schema
-└── .env.local                  # Environment variables
+├── supabase-schema.sql        # Database schema
+└── tailwind.config.ts         # Tailwind configuration
 ```
 
-## Customization
+## 🚀 Deployment
 
-### Update Personal Information
+### Vercel (Recommended)
 
-1. **Header/Footer**: Edit `src/components/layout/Header.tsx` and `Footer.tsx`
-2. **Hero Section**: Edit `src/components/sections/Hero.tsx`
-3. **About Section**: Edit `src/components/sections/About.tsx`
-4. **Social Links**: Update in `Footer.tsx` and `Contact.tsx`
+1. Push your code to GitHub
+2. Import your repository in [Vercel](https://vercel.com)
+3. Add environment variables in Vercel dashboard
+4. Deploy!
 
-### Add Projects
+### Other Platforms
 
-Projects are managed in Supabase. To add a new project:
+The site can be deployed to any platform that supports Next.js:
+- Netlify
+- AWS Amplify
+- Railway
+- Render
 
-1. Go to Supabase Dashboard > Table Editor > projects
-2. Insert a new row with your project details
-3. Optionally add media in the `project_media` table
+## 🔧 Configuration
 
-### Update Experience
+### Adding Experience
 
-Experience entries are also in Supabase:
+Insert data into the `experience` table in Supabase:
 
-1. Go to Supabase Dashboard > Table Editor > experience
-2. Edit existing entries or insert new ones
-3. Use `display_order` to control the order
+```sql
+INSERT INTO experience (company, company_url, role, start_date, end_date, highlights, display_order)
+VALUES (
+  'Company Name',
+  'https://company.com',
+  'Your Role',
+  '2023-01-01',
+  '2024-01-01',
+  ARRAY['Achievement 1', 'Achievement 2'],
+  1
+);
+```
 
-### Change Colors
+### Adding Projects
 
-Edit the CSS variables in `src/app/globals.css`:
+Insert data into the `projects` table:
 
+```sql
+INSERT INTO projects (title, description, tech_stack, featured, demo_url, github_url, display_order)
+VALUES (
+  'Project Name',
+  'Project description',
+  ARRAY['Next.js', 'TypeScript', 'Tailwind'],
+  true,
+  'https://demo.com',
+  'https://github.com/username/repo',
+  1
+);
+```
+
+## 🎨 Customization
+
+### Colors
+Edit `src/app/globals.css` to customize the color scheme:
 ```css
 :root {
-  --accent: #3b82f6; /* Change this to your preferred color */
-  /* ... other variables */
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --accent: 217.2 91.2% 59.8%;
+  /* ... */
 }
 ```
 
-## Deployment
+### Content
+Update personal information in:
+- `src/components/layout/Header.tsx` - Name and title
+- `src/components/sections/About.tsx` - About section content
+- `src/app/layout.tsx` - SEO metadata
 
-### Deploy to Vercel
+## 📝 License
 
-1. **Install Vercel CLI** (optional):
-   ```bash
-   npm i -g vercel
-   ```
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-2. **Deploy**:
-   ```bash
-   vercel
-   ```
-   Or connect your GitHub repository to Vercel for automatic deployments.
+## 👤 Author
 
-3. **Set environment variables** in Vercel:
-   - Go to your project settings
-   - Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+**Ilya Goykhfis**
+- GitHub: [@IlyaG89](https://github.com/IlyaG89)
+- LinkedIn: [Ilya Goykhfis](https://www.linkedin.com/in/ilya-goykhfis-877196166)
+- Email: ilyagoykhfis@gmail.com
 
-4. **Update Supabase redirect URLs**:
-   - In Supabase Dashboard > Authentication > URL Configuration
-   - Add your production URL
+## 🙏 Acknowledgments
 
-## Database Schema
+- Design inspiration from [Brittany Chiang](https://brittanychiang.com)
+- Built with [Next.js](https://nextjs.org)
+- Powered by [Supabase](https://supabase.com)
+- Styled with [Tailwind CSS](https://tailwindcss.com)
 
-The database includes four main tables:
+---
 
-- **projects**: Store project information and case studies
-- **project_media**: Store images and videos for projects
-- **experience**: Professional experience timeline
-- **contact_submissions**: Optional contact form submissions
-
-See `supabase-schema.sql` for the complete schema.
-
-## Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-
-## License
-
-This project is open source and available under the MIT License.
-
-## Support
-
-For issues or questions, please open an issue on GitHub or contact ilyagoykhfis@gmail.com.
+⭐ If you found this project helpful, please consider giving it a star!
