@@ -39,6 +39,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
     const imageUrl = project.thumbnail_url || ogImage;
 
+    // Portfolio project needs wider container for OG image
+    const isPortfolio = project.slug === 'portfolio-website';
+    const imageHeight = isPortfolio ? 'h-40 md:h-[157px]' : 'h-32 md:h-[180px]';
+    const objectFit = isPortfolio ? 'object-contain' : 'object-cover';
+
     return (
         <a
             href={project.live_url || undefined}
@@ -47,10 +52,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             className="block"
         >
             <div className="group p-6 rounded-lg hover:bg-muted/30 hover:shadow-lg transition-all duration-300">
-                <div className="grid md:grid-cols-[200px_1fr] gap-6">
+                <div className="grid md:grid-cols-[260px_1fr] gap-6">
                     {/* Thumbnail */}
                     {(imageUrl || imageLoading) && (
-                        <div className="w-full h-32 md:h-[180px] bg-muted rounded overflow-hidden border-2 border-muted">
+                        <div className={`w-full ${imageHeight} rounded overflow-hidden border-2 border-muted ${isPortfolio ? 'bg-background' : ''}`}>
                             {imageLoading ? (
                                 <div className="w-full h-full flex items-center justify-center">
                                     <div className="animate-pulse text-muted-foreground text-xs">
@@ -61,7 +66,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                                 <img
                                     src={imageUrl}
                                     alt={`${project.title} - Project Screenshot`}
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                    className={`w-full h-full ${objectFit} opacity-80 group-hover:opacity-100 transition-opacity`}
                                     onError={(e) => {
                                         e.currentTarget.style.display = "none";
                                     }}
@@ -84,7 +89,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
                         {/* Tech Stack */}
                         <div className="flex flex-wrap gap-2">
-                            {project.tech_stack.slice(0, 6).map((tech) => (
+                            {project.tech_stack.slice(0, 12).map((tech) => (
                                 <span
                                     key={tech}
                                     className="px-3 py-1 text-xs font-medium text-accent bg-accent/10 rounded-full"

@@ -70,7 +70,7 @@ Built with a focus on user experience and scalability, Careerax handles complex 
             "Supabase",
             "PostgreSQL",
             "Google Gemini AI",
-            "PDF Generation",
+            "SEO Optimization",
             "Vercel"
         ],
         architecture: `Frontend Architecture:
@@ -101,6 +101,59 @@ Key Technical Decisions:
         thumbnail_url: null,
         featured: true,
         display_order: 1,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+    },
+    {
+        id: "2",
+        slug: "portfolio-website",
+        title: "Personal Portfolio Website",
+        short_description: "A modern, responsive portfolio website showcasing my projects, professional experience, and contact information.",
+        overview: `A professional portfolio website built with Next.js 14, featuring a clean, modern design with smooth animations and interactive elements. The site showcases my projects, work experience, technical skills, and provides multiple ways to get in touch.
+
+The portfolio features a fully responsive design that works seamlessly across all devices, with an intuitive navigation system and easy access to contact information including email, phone, Telegram, and social media links.`,
+        role: `As the sole developer, I designed and built the entire portfolio from scratch:
+- Architected a modern, performant Next.js application with App Router
+- Designed and implemented a responsive UI with Tailwind CSS and custom animations
+- Created an intuitive navigation system with smooth scrolling and mobile menu
+- Integrated multiple contact methods including email, phone, and Telegram
+- Built a professional experience timeline and project showcase
+- Optimized images and assets for fast loading times`,
+        tech_stack: [
+            "Next.js 14",
+            "TypeScript",
+            "React",
+            "Tailwind CSS"
+        ],
+        architecture: `Frontend Architecture:
+- Next.js App Router for optimal performance
+- Server-side rendering for fast initial page loads
+- Tailwind CSS for responsive, maintainable styling
+- Custom animations and interactive effects
+
+Key Features:
+- Responsive design with mobile-first approach
+- Smooth scrolling navigation
+- Project showcase with detailed case studies
+- Professional experience timeline
+- Multiple contact methods (email, phone, Telegram, social media)
+- Interactive sidebar with quick access to all sections
+
+Technical Highlights:
+- Static site generation for optimal performance
+- Image optimization with Next.js Image component
+- Custom favicon and app icons
+- Accessible and semantic HTML structure`,
+        how_to_use: `1. Visit the homepage to see an overview of my skills and experience
+2. Navigate through sections using the sidebar or mobile menu
+3. Explore featured projects with detailed case studies
+4. View my professional experience timeline
+5. Contact me via email, phone, Telegram, or social media links in the sidebar`,
+        live_url: "https://ilyagoykhfis.dev",
+        github_url: null,
+        thumbnail_url: "/api/og-image",
+        featured: true,
+        display_order: 2,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
     }
