@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ilyagoykhfis.com"),
+  metadataBase: new URL("https://ilyagoykhfis.dev"),
   title: {
     default: "Ilya Goykhfis - Senior Full Stack Developer",
     template: "%s | Ilya Goykhfis",
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ilyagoykhfis.com",
+    url: "https://ilyagoykhfis.dev",
     title: "Ilya Goykhfis - Senior Full Stack Developer",
     description:
       "Senior Full Stack Developer with 9+ years of experience building scalable web applications.",
     siteName: "Ilya Goykhfis Portfolio",
     images: [
       {
-        url: "/api/og-image",
+        url: "https://ilyagoykhfis.dev/api/og-image",
         width: 1200,
         height: 630,
         alt: "Ilya Goykhfis - Senior Full Stack Developer",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "Ilya Goykhfis - Senior Full Stack Developer",
     description:
       "Senior Full Stack Developer with 9+ years of experience building scalable web applications.",
-    images: ["/api/og-image"],
+    images: ["https://ilyagoykhfis.dev/api/og-image"],
   },
   robots: {
     index: true,
