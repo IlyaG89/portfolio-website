@@ -239,7 +239,7 @@ export default function Header() {
                             <div className="absolute inset-0" style={{ transform: 'translateX(-10%)' }}>
                                 <Image
                                     src="/profile.jpg"
-                                    alt="Ilya Goykhfis"
+                                    alt="Ilya Goykhfis - Senior Full Stack Developer"
                                     fill
                                     className="object-cover scale-150"
                                     style={{ objectPosition: 'center 30%' }}
@@ -339,7 +339,7 @@ export default function Header() {
                             <div className="absolute inset-0" style={{ transform: 'translateX(-10%)' }}>
                                 <Image
                                     src="/profile.jpg"
-                                    alt="Ilya Goykhfis"
+                                    alt="Ilya Goykhfis - Senior Full Stack Developer"
                                     fill
                                     className="object-cover scale-150"
                                     style={{ objectPosition: 'center 30%' }}

@@ -60,7 +60,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                             ) : imageUrl ? (
                                 <img
                                     src={imageUrl}
-                                    alt={project.title}
+                                    alt={`${project.title} - Project Screenshot`}
                                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                                     onError={(e) => {
                                         e.currentTarget.style.display = "none";

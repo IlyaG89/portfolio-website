@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MouseSpotlight from "@/components/effects/MouseSpotlight";
+import StructuredData from "@/components/seo/StructuredData";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,6 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ilyagoykhfis.com"),
   title: {
     default: "Ilya Goykhfis - Senior Full Stack Developer",
     template: "%s | Ilya Goykhfis",
@@ -25,9 +27,16 @@ export const metadata: Metadata = {
     "Python",
     "Web Development",
     "Software Engineer",
+    "Next.js",
+    "JavaScript",
+    "Frontend Developer",
+    "Backend Developer",
   ],
   authors: [{ name: "Ilya Goykhfis" }],
   creator: "Ilya Goykhfis",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/icon.svg",
     apple: "/apple-icon.svg",
@@ -40,16 +49,37 @@ export const metadata: Metadata = {
     description:
       "Senior Full Stack Developer with 9+ years of experience building scalable web applications.",
     siteName: "Ilya Goykhfis Portfolio",
+    images: [
+      {
+        url: "/api/og-image",
+        width: 1200,
+        height: 630,
+        alt: "Ilya Goykhfis - Senior Full Stack Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ilya Goykhfis - Senior Full Stack Developer",
     description:
       "Senior Full Stack Developer with 9+ years of experience building scalable web applications.",
+    images: ["/api/og-image"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add your verification codes when ready
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
   },
 };
 
@@ -61,6 +91,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
+        <StructuredData />
         <MouseSpotlight />
         <div className="min-h-screen">
           <Header />
