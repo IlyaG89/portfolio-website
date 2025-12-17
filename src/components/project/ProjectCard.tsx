@@ -1,6 +1,6 @@
 "use client";
 
-import { Project } from "@/lib/supabase/types";
+import { Project } from "@/data/data";
 import { useEffect, useState } from "react";
 
 interface ProjectCardProps {

@@ -1,41 +1,13 @@
 import { notFound } from "next/navigation";
-import { supabase } from "@/lib/supabase/client";
+import { projects, projectMedia, Project, ProjectMedia } from "@/data/data";
 import Section from "@/components/layout/Section";
 import TechStack from "@/components/project/TechStack";
-import Button from "@/components/ui/Button";
 import { Metadata } from "next";
 
 interface ProjectPageProps {
     params: Promise<{
         slug: string;
     }>;
-}
-
-// Define the Project interface based on your Supabase schema
-interface Project {
-    id: number;
-    created_at: string; // Assuming a timestamp
-    title: string;
-    slug: string;
-    short_description: string;
-    overview: string;
-    role: string;
-    tech_stack: string[]; // Assuming this is stored as a JSONB array of strings
-    architecture: string | null;
-    how_to_use: string | null;
-    live_url: string | null;
-    github_url: string | null;
-}
-
-// Define the ProjectMedia interface
-interface ProjectMedia {
-    id: string;
-    project_id: string;
-    media_type: "image" | "video" | "youtube" | "loom";
-    url: string;
-    caption: string | null;
-    display_order: number | null;
-    created_at: string;
 }
 
 /**
@@ -45,11 +17,7 @@ export async function generateMetadata({
     params,
 }: ProjectPageProps): Promise<Metadata> {
     const { slug } = await params;
-    const { data: project } = await supabase
-        .from("projects")
-        .select("*")
-        .eq("slug", slug)
-        .single<Project>(); // Apply the Project type here
+    const project = projects.find(p => p.slug === slug);
 
     if (!project) {
         return {
@@ -75,24 +43,15 @@ export async function generateMetadata({
 export default async function ProjectPage({ params }: ProjectPageProps) {
     const { slug } = await params;
 
-    // Fetch project data
-    const { data: project, error } = await supabase
-        .from("projects")
-        .select("*")
-        .eq("slug", slug)
-        .single<Project>();
+    // Find project by slug
+    const project = projects.find(p => p.slug === slug);
 
-    if (error || !project) {
+    if (!project) {
         notFound();
     }
 
-    // Fetch project media
-    const { data: media } = await supabase
-        .from("project_media")
-        .select("*")
-        .eq("project_id", project.id)
-        .order("display_order", { ascending: true })
-        .returns<ProjectMedia[]>();
+    // Find project media
+    const media = projectMedia.filter(m => m.project_id === project.id);
 
     return (
         <div className="pt-20">
@@ -107,19 +66,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     {/* External Links */}
                     <div className="flex flex-wrap gap-4">
                         {project.live_url && (
-                            <Button
-                                onClick={() => window.open(project.live_url!, "_blank")}
+                            <a
+                                href={project.live_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
                             >
                                 View Live Site
-                            </Button>
+                            </a>
                         )}
                         {project.github_url && (
-                            <Button
-                                variant="secondary"
-                                onClick={() => window.open(project.github_url!, "_blank")}
+                            <a
+                                href={project.github_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                             >
                                 View on GitHub
-                            </Button>
+                            </a>
                         )}
                     </div>
                 </div>

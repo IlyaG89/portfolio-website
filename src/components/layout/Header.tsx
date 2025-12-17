@@ -124,47 +124,12 @@ export default function Header() {
                 const element = document.getElementById(hash);
                 if (element) {
                     element.scrollIntoView({ behavior: "smooth" });
-
-                    // Watch for DOM changes (content loading) and re-scroll when stable
-                    let scrollTimeout: NodeJS.Timeout;
-                    let mutationCount = 0;
-
-                    const observer = new MutationObserver(() => {
-                        mutationCount++;
-                        // Clear previous timeout
-                        clearTimeout(scrollTimeout);
-
-                        // Set new timeout - will only fire if mutations stop for 500ms
-                        scrollTimeout = setTimeout(() => {
-                            const elementAgain = document.getElementById(hash);
-                            if (elementAgain) {
-                                elementAgain.scrollIntoView({ behavior: "smooth" });
-                            }
-
-                            // Stop observing and clear flag after final scroll
-                            observer.disconnect();
-                            setTimeout(() => {
-                                isInitialNavigationRef.current = false;
-                            }, 1000);
-                        }, 500); // Wait for 500ms of no mutations
-                    });
-
-                    // Observe the main content area for changes
-                    const mainContent = document.querySelector('main') || document.body;
-                    observer.observe(mainContent, {
-                        childList: true,
-                        subtree: true,
-                        attributes: false,
-                    });
-
-                    // Fallback: disconnect after 5 seconds max
-                    setTimeout(() => {
-                        observer.disconnect();
-                        if (isInitialNavigationRef.current) {
-                            isInitialNavigationRef.current = false;
-                        }
-                    }, 5000);
                 }
+
+                // Clear the initial navigation flag after scroll
+                setTimeout(() => {
+                    isInitialNavigationRef.current = false;
+                }, 1000);
             }, 100);
         }
     }, []);

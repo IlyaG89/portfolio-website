@@ -2,56 +2,15 @@
 
 import ProjectCard from "../project/ProjectCard";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase/client";
-import { Project } from "@/lib/supabase/types";
+import { projects } from "@/data/data";
 
 /**
  * Projects section - Brittany Chiang style
  * Grid of project cards with hover effects
  */
 export default function Projects() {
-    const [projects, setProjects] = useState<Project[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function fetchProjects() {
-            try {
-                const { data, error } = await supabase
-                    .from("projects")
-                    .select("*")
-                    .eq("featured", true)
-                    .order("display_order", { ascending: true });
-
-                if (error) throw error;
-                setProjects(data || []);
-            } catch (error) {
-                console.error("Error fetching projects:", error);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchProjects();
-    }, []);
-
-    if (loading) {
-        return (
-            <section id="projects" className="mb-24 scroll-mt-16 pt-8 border-t border-muted/30">
-                <h2 className="sticky top-0 z-10 mb-8 text-sm font-bold uppercase tracking-widest text-foreground lg:sr-only">
-                    Projects
-                </h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                    {[1, 2].map((i) => (
-                        <div
-                            key={i}
-                            className="h-96 bg-muted/30 animate-pulse rounded-lg"
-                        />
-                    ))}
-                </div>
-            </section>
-        );
-    }
+    // Filter for featured projects only
+    const featuredProjects = projects.filter(p => p.featured);
 
     return (
         <section id="projects" className="mb-24 scroll-mt-16 pt-8 border-t border-muted/30">
@@ -60,7 +19,7 @@ export default function Projects() {
             </h2>
 
             <div className="space-y-12">
-                {projects.map((project, index) => (
+                {featuredProjects.map((project, index) => (
                     <motion.div
                         key={project.id}
                         initial={{ opacity: 0, y: 20 }}
@@ -73,7 +32,7 @@ export default function Projects() {
                 ))}
             </div>
 
-            {projects.length === 0 && !loading && (
+            {featuredProjects.length === 0 && (
                 <p className="text-center text-muted-foreground">
                     No projects to display yet. Check back soon!
                 </p>

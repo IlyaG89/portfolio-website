@@ -2,9 +2,7 @@
 
 import Card from "../ui/Card";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase/client";
-import { Experience as ExperienceType } from "@/lib/supabase/types";
+import { experiences } from "@/data/data";
 import { formatDateRange } from "@/lib/utils";
 
 /**
@@ -12,46 +10,6 @@ import { formatDateRange } from "@/lib/utils";
  * Clean cards with hover effects
  */
 export default function Experience() {
-    const [experiences, setExperiences] = useState<ExperienceType[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function fetchExperience() {
-            try {
-                const { data, error } = await supabase
-                    .from("experience")
-                    .select("*")
-                    .order("display_order", { ascending: true });
-
-                if (error) throw error;
-                setExperiences(data || []);
-            } catch (error) {
-                console.error("Error fetching experience:", error);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchExperience();
-    }, []);
-
-    if (loading) {
-        return (
-            <section id="experience" className="mb-32 scroll-mt-16">
-                <h2 className="sticky top-0 z-10 mb-8 text-sm font-bold uppercase tracking-widest text-foreground lg:sr-only">
-                    Experience
-                </h2>
-                <div className="space-y-4">
-                    {[1, 2, 3].map((i) => (
-                        <div
-                            key={i}
-                            className="h-48 bg-muted/30 animate-pulse rounded-lg"
-                        />
-                    ))}
-                </div>
-            </section>
-        );
-    }
 
     return (
         <section id="experience" className="mb-32 scroll-mt-16">
