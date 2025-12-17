@@ -12,8 +12,10 @@ export async function GET(request: NextRequest) {
     // If no URL parameter, generate default OG image for the portfolio
     if (!url) {
         try {
-            // Fetch the profile image
-            const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+            // Dynamically determine the base URL from request headers
+            const protocol = request.headers.get('x-forwarded-proto') || 'http';
+            const host = request.headers.get('host') || 'localhost:3000';
+            const baseUrl = `${protocol}://${host}`;
             const profileImageUrl = `${baseUrl}/profile.png`;
 
             let profileImageSrc = profileImageUrl;
