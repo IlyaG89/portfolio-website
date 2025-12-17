@@ -41,7 +41,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
     // Portfolio project needs wider container for OG image
     const isPortfolio = project.slug === 'portfolio-website';
-    const imageHeight = isPortfolio ? 'h-40 md:h-[157px]' : 'h-32 md:h-[180px]';
+    const imageHeight = isPortfolio ? 'h-40 md:h-[137px]' : 'h-32 md:h-[180px]';
     const objectFit = isPortfolio ? 'object-contain' : 'object-cover';
 
     return (
