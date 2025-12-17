@@ -222,7 +222,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Ilya Goykhfis**
 - GitHub: [@IlyaG89](https://github.com/IlyaG89)
-- LinkedIn: [Ilya Goykhfis](https://www.linkedin.com/in/ilya-goykhfis-877196166)
+- LinkedIn: [Ilya Goykhfis](https://www.linkedin.com/in/ilya-goykhfis)
 - Email: ilyagoykhfis@gmail.com
 
 ## 🙏 Acknowledgments
