@@ -13,7 +13,7 @@ export default function StructuredData() {
         description:
             "Senior Full Stack Developer with 9+ years of experience building scalable web applications. Specialized in React, TypeScript, Node.js, and Python.",
         url: "https://ilyagoykhfis.com",
-        image: "https://ilyagoykhfis.com/profile.jpg",
+        image: "https://ilyagoykhfis.com/profile.png",
         sameAs: [
             "https://www.linkedin.com/in/ilya-goykhfis",
             "https://github.com/IlyaG89",
