@@ -55,7 +55,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 <div className="grid md:grid-cols-[260px_1fr] gap-6">
                     {/* Thumbnail */}
                     {(imageUrl || imageLoading) && (
-                        <div className={`w-full ${imageHeight} rounded overflow-hidden border-2 border-muted ${isPortfolio ? 'bg-background' : ''}`}>
+                        <div className={`w-full ${isPortfolio ? 'aspect-[1200/630]' : imageHeight} rounded overflow-hidden border-2 border-muted ${isPortfolio ? 'bg-background' : ''}`}>
                             {imageLoading ? (
                                 <div className="w-full h-full flex items-center justify-center">
                                     <div className="animate-pulse text-muted-foreground text-xs">
