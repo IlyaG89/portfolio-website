@@ -39,20 +39,6 @@ export default function About() {
                     </p>
 
                     <p>
-                        Most recently, I built{" "}
-                        <a
-                            href="#projects"
-                            className="text-accent hover:underline font-medium"
-                        >
-                            Careerax
-                        </a>
-                        , an AI-powered resume builder that helps job seekers create professional,
-                        ATS-friendly resumes. This project showcases my ability to integrate modern
-                        AI technologies with robust full-stack architecture, delivering a product
-                        that provides real value to users.
-                    </p>
-
-                    <p>
                         My expertise spans modern frontend frameworks (React, TypeScript), backend
                         systems (Node.js, Python/Flask), databases (PostgreSQL, MongoDB), and cloud
                         platforms. I thrive on learning new technologies and applying them to build

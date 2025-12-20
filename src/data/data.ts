@@ -221,17 +221,16 @@ Technical Highlights:
 export const experiences: Experience[] = [
     {
         id: "1",
-        company: "EasySend",
-        company_url: "https://www.easysend.io",
-        role: "Senior Full Stack Developer",
+        company: "Independent Developer",
+        company_url: null,
+        role: "Full Stack Developer & AI Solutions Architect",
         location: "Remote",
-        start_date: "2021-01-01",
+        start_date: "2025-12-01",
         end_date: null,
         highlights: [
-            "Engineered and maintained robust full-stack web applications, leveraging React and EmberJS for dynamic client-side interfaces and Python (Flask) for scalable back-end services",
-            "Spearheaded the design and implementation of critical Salesforce CRM integrations, enhancing data synchronization and streamlining core business operations",
-            "Contributed significantly to an integration team, delivering robust integrations with monday.com and Dynamics CRMs that optimized data flow and enhanced cross-platform functionality",
-            "Engineered sophisticated UI features, including a complex drag-and-drop graph flow builder, which improved user productivity and supported advanced data visualization needs"
+            "Architected and developed AI-powered SaaS applications including Careerax (AI resume builder) and AI Campaign Builder (PPC campaign generator), serving users globally",
+            "Designed and implemented full-stack solutions using Next.js, TypeScript, React, Supabase, and Google Gemini AI, focusing on scalability and user experience",
+            "Built sophisticated AI integration systems for content optimization, keyword generation, and campaign automation, reducing manual work time by over 90%"
         ],
         display_order: 1,
         created_at: new Date().toISOString(),
@@ -239,6 +238,24 @@ export const experiences: Experience[] = [
     },
     {
         id: "2",
+        company: "EasySend",
+        company_url: "https://www.easysend.io",
+        role: "Senior Full Stack Developer",
+        location: "Remote",
+        start_date: "2021-01-01",
+        end_date: "2025-12-31",
+        highlights: [
+            "Engineered and maintained robust full-stack web applications, leveraging React and EmberJS for dynamic client-side interfaces and Python (Flask) for scalable back-end services",
+            "Spearheaded the design and implementation of critical Salesforce CRM integrations, enhancing data synchronization and streamlining core business operations",
+            "Contributed significantly to an integration team, delivering robust integrations with monday.com and Dynamics CRMs that optimized data flow and enhanced cross-platform functionality",
+            "Engineered sophisticated UI features, including a complex drag-and-drop graph flow builder, which improved user productivity and supported advanced data visualization needs"
+        ],
+        display_order: 2,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+    },
+    {
+        id: "3",
         company: "Edgify",
         company_url: "https://edgify.ai",
         role: "Senior Full Stack Developer",
@@ -251,7 +268,7 @@ export const experiences: Experience[] = [
             "Architected and developed bespoke UI component libraries and internal tooling from the ground up, ensuring feature delivery and standardizing front-end development",
             "Engineered and optimized robust server-side APIs and microservices using Node.js (AdonisJS), facilitating seamless data interactions with PostgreSQL"
         ],
-        display_order: 2,
+        display_order: 3,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
     },
@@ -268,12 +285,12 @@ export const experiences: Experience[] = [
             "Led the entire feature lifecycle for high-impact features, encompassing design, development, testing, and successful deployment, ensuring alignment with project goals and stakeholder satisfaction",
             "Cultivated team expertise and fostered continuous improvement by designing and delivering technical lectures and advanced feature design principles and emerging web technologies to cross-functional development teams"
         ],
-        display_order: 3,
+        display_order: 4,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
     },
     {
-        id: "4",
+        id: "5",
         company: "Intel",
         company_url: "https://www.intel.com/content/www/us/en/corporate-responsibility/intel-in-israel.html",
         role: "Full Stack Developer",
@@ -284,7 +301,7 @@ export const experiences: Experience[] = [
             "Engineered and optimized a comprehensive suite of responsive React components utilizing TypeScript, Redux, and SCSS, leading to a 20% improvement in load times and enhanced user engagement",
             "Architected and deployed scalable RESTful APIs and microservices using Node.js Express, managing complex data operations with MongoDB to support thousands of monthly users"
         ],
-        display_order: 4,
+        display_order: 5,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
     }
