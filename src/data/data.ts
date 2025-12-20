@@ -50,6 +50,64 @@ export interface Experience {
 export const projects: Project[] = [
     {
         id: "1",
+        slug: "ai-campaign-builder",
+        title: "AI Campaign Builder - PPC Campaign Generator",
+        short_description: "AI-powered PPC campaign generator for Google Ads and Yandex Direct. Create professional campaigns in minutes with AI-generated keywords, ad groups, and ad copy.",
+        overview: `AI Campaign Builder is a comprehensive platform that leverages AI to help businesses and marketers create professional PPC campaigns in minutes. The platform analyzes product descriptions and generates hundreds of relevant keywords, organized ad groups, and compelling ad copy optimized for Google Ads and Yandex Direct.
+
+Built with a focus on speed and ease of use, AI Campaign Builder eliminates hours of manual work by automating keyword research, ad group structuring, and ad copy creation while maintaining full control for customization.`,
+        role: `As the lead developer, I architected and built the entire platform from the ground up:
+- Designed and implemented the full-stack architecture using Next.js and Supabase
+- Developed AI integration for keyword generation and ad copy optimization using Google Gemini
+- Built a sophisticated campaign generation system with support for multiple PPC platforms
+- Implemented secure authentication and user data management with role-based access
+- Created an intuitive campaign builder interface with real-time preview and editing
+- Developed export functionality for Google Ads and Yandex Direct formats`,
+        tech_stack: [
+            "Next.js 14",
+            "TypeScript",
+            "React",
+            "Tailwind CSS",
+            "Supabase",
+            "PostgreSQL",
+            "Google Gemini AI",
+            "SEO Optimization",
+            "Vercel"
+        ],
+        architecture: `Frontend Architecture:
+- Next.js App Router for optimal performance and SEO
+- Server and Client Components for efficient rendering
+- Tailwind CSS for responsive, maintainable styling
+- Multi-step wizard interface for campaign creation
+
+Backend Architecture:
+- Supabase for authentication, database, and storage
+- PostgreSQL with Row Level Security (RLS) for data protection
+- API routes for AI integration and campaign generation
+- Serverless functions for scalable processing
+
+Key Technical Decisions:
+- Chose Supabase for rapid development with enterprise-grade security
+- Implemented AI generation as a guided process with user control
+- Built modular export system for easy addition of new PPC platforms
+- Used optimistic UI updates for responsive user experience
+- Implemented usage tracking and tier-based limits for monetization`,
+        how_to_use: `1. Sign up or log in to create your account
+2. Describe your product, target audience, and campaign goals
+3. AI generates keywords, ad groups, and ad copy in seconds
+4. Review and customize the generated campaign
+5. Export in Google Ads or Yandex Direct format
+6. Upload directly to your PPC platform`,
+        live_url: "https://ai-ads-campaign-builder.vercel.app",
+        github_url: null,
+        thumbnail_url: null,
+        featured: true,
+        display_order: 1,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+    },
+    {
+        id: "2",
         slug: "careerax",
         title: "Careerax - AI-Powered Resume Builder",
         short_description: "A modern resume builder with AI-driven content optimization, helping users create professional resumes tailored to job descriptions.",
@@ -100,12 +158,12 @@ Key Technical Decisions:
         github_url: null,
         thumbnail_url: null,
         featured: true,
-        display_order: 1,
+        display_order: 2,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
     },
     {
-        id: "2",
+        id: "3",
         slug: "portfolio-website",
         title: "Personal Portfolio Website",
         short_description: "A modern, responsive portfolio website showcasing my projects, professional experience, and contact information.",
@@ -153,7 +211,7 @@ Technical Highlights:
         github_url: null,
         thumbnail_url: "/api/og-image",
         featured: true,
-        display_order: 2,
+        display_order: 3,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
     }
